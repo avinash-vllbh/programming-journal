@@ -1,7 +1,7 @@
 # remove duplicates from an unsorted linked list. [CTCI, 77]
 
 require_relative 'SingleLinkedList'
-class RemoveDuplicates < SinglyLinkedList
+class RemoveDuplicates < SingleLinkedList
   attr_accessor :list_hash
   def initialize
     @list_hash = Hash.new
@@ -11,7 +11,6 @@ class RemoveDuplicates < SinglyLinkedList
   # Creates a LinkedList of size limit using Ruby's Psuedo Random number generator
   # Iterates from 0 to limit-1 and add's a random number to the list on self
   ###
-  require 'pry'
   def createRandomList(limit)
     limit.times do
       add(rand(10))

@@ -1,7 +1,7 @@
 # Write an algorithm to find the kth to last element of a singly linked list. [CTCI, 77]
 
 require_relative 'SingleLinkedList'
-class KthLastElement < SinglyLinkedList
+class KthLastElement < SingleLinkedList
   ###
   # Creates a LinkedList of random size using Ruby's Psuedo Random number generator
   # Iterates from 0 to size-1 and add's a random number to the list on self
