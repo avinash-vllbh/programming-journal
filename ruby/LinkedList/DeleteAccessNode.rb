@@ -5,7 +5,7 @@ class DeleteAccessNode < SingleLinkedList
   ###
   # => Creates a random list of size 10 and returns a node at random other than head.
   ###
-  def findAndDeleteRandomNode
+  def getRandomNode
     select_node = nil
     createRandomList(10)
     current_node = head
@@ -15,7 +15,7 @@ class DeleteAccessNode < SingleLinkedList
       break if current_node == nil
     end
     select_node = current_node
-    delAccessNode(select_node)
+    return select_node
   end
 
   ##
@@ -35,5 +35,5 @@ class DeleteAccessNode < SingleLinkedList
 end
 
 delNode = DeleteAccessNode.new
-delNode.findAndDeleteRandomNode
-
+node = delNode.getRandomNode
+delNode.delAccessNode(node)

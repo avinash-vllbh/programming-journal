@@ -39,7 +39,22 @@ class SingleLinkedList
     limit.times do
       add(rand(10))
     end
-    print
+  end
+
+  ###
+  # => Creates a random list of size 10 and returns a node at random other than head.
+  ###
+  def getRandomNode
+    select_node = nil
+    createRandomList(10)
+    current_node = head
+    # Select a random node from the list to delete just that node.
+    (rand(8)+1).times do 
+      current_node = current_node.next
+      break if current_node == nil
+    end
+    select_node = current_node
+    return select_node
   end
 
 
