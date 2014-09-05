@@ -1,5 +1,3 @@
-# remove duplicates from an unsorted linked list. [CTCI, 77]
-
 class Node
   attr_accessor :value, :next
 
@@ -9,7 +7,7 @@ class Node
 
 end
 
-class SinglyLinkedList
+class SingleLinkedList
   attr_accessor :head
 
   # Head can be intialized when the class object is being created
@@ -32,6 +30,18 @@ class SinglyLinkedList
       current_node.next = Node.new(value)
     end
   end
+
+  ###
+  # Creates a LinkedList of size limit using Ruby's Psuedo Random number generator
+  # Iterates from 0 to limit-1 and add's a random number to the list on self
+  ###
+  def createRandomList(limit)
+    limit.times do
+      add(rand(10))
+    end
+    print
+  end
+
 
   # Find an element in the linked list
   # Traverse the list one by one from head and return if the element is found
