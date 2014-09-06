@@ -1,7 +1,7 @@
 require 'pry'
 ###
 # Search by reducing the search space by half each time
-# Time complexity: O(n)
+# Time complexity: O(logn)
 # Space complexity: O(1)
 ###
 def iterativeSearch(array, size, x)
@@ -22,7 +22,7 @@ end
 
 ###
 # Search by reducing the search space by half each time
-# Time complexity: O(n)
+# Time complexity: O(logn)
 # Space complexity: O(1)
 ###
 def recursiveSearch(array, start, finish, x)
@@ -39,7 +39,7 @@ end
 
 ###
 # Search by reducing the search space by half each time and retrun the first occurance of search element
-# Time complexity: O(n)
+# Time complexity: O(logn)
 # Space complexity: O(1)
 ###
 def findFirstOccurance(array, size, x)
@@ -63,7 +63,7 @@ end
 
 ###
 # Search by reducing the search space by half each time and return the last occurance of search element
-# Time complexity: O(n)
+# Time complexity: O(logn)
 # Space complexity: O(1)
 ###
 def findLastOccurance(array, size, x)
