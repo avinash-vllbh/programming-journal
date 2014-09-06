@@ -35,8 +35,10 @@ end
 ###
 def countOccurances(array, element)
   first = binarySearch(array, array.size, element) # Time complexity: O(logn)
-  last = binarySearch(array, array.size, element, false) # Time complexity: O(logn)
-  return count = last - first + 1 unless last == -1
+  unless first == -1
+    last = binarySearch(array, array.size, element, false) # Time complexity: O(logn)
+    return count = last - first + 1
+  end
   return 0
 end
 
