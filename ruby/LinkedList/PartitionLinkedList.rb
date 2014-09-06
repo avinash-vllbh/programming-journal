@@ -12,7 +12,7 @@ attr_accessor :random_list, :less_list, :greater_list #:partitioned_list
   end
 
   ###
-  # => Add the values 
+  # 
   ###
   def partitionLL(x)
     # create a random linked list of size 10
@@ -24,6 +24,8 @@ attr_accessor :random_list, :less_list, :greater_list #:partitioned_list
     current_node = random_list.head
     while current_node != nil
       if current_node.value < x
+        less_pointer.value = x
+
         less_list.add(less_pointer, current_node.value)
       else
         greater_list.add(greater_pointer, current_node.value)

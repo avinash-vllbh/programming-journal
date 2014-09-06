@@ -18,7 +18,7 @@ class SingleLinkedList
   # Add a new element to the linked list
   # Traverse to the end of the list and point the current end to the element
   # Time complexity O(n)
-  # Space complexity O(n)
+  # Space complexity O(1)
   def add(value)
     if head.nil?
       @head = Node.new(value)
@@ -61,7 +61,7 @@ class SingleLinkedList
   # Find an element in the linked list
   # Traverse the list one by one from head and return if the element is found
   # Time complexity O(n) => Worst case, traverse the entire array to find the element
-  # Space complexity O(n)
+  # Space complexity O(1)
   def find(value)
     current_node = head
     while current_node != nil
@@ -74,7 +74,7 @@ class SingleLinkedList
   # Remove an element in the linked list
   # Traverse the list one by one from head and return if the element is found
   # Time complexity O(n) => Worst case, traverse the entire array to find the element
-  # Space complexity O(n)
+  # Space complexity O(1)
   def remove(value)
     if head.value == value
       @head = head.next
@@ -96,7 +96,7 @@ class SingleLinkedList
 
   # Traverse the list one by one from head and print the value of each node
   # Time complexity O(n)
-  # Space complexity O(n)
+  # Space complexity O(1)
   def print
     current_node = head
     list = []
@@ -105,6 +105,43 @@ class SingleLinkedList
       current_node = current_node.next
     end
     puts list.join("->")
+  end
+
+  # Reverse a linked list iteratively
+  # Time complexity O(n)
+  # Space complexity O(1)
+  def reverseList
+    prev = nil
+    current = head
+    next_node = nil
+    # Reversing the links iteratively
+    # 8 -> 9 => 8 <- 9
+    while current != nil
+      next_node = current.next
+      current.next = prev
+      prev = current
+      current = next_node
+    end
+    @head = prev
+  end
+
+  ###
+  # Reverse a linked list recursively
+  # Uses function stack during execution to reverse the nodes
+  # Time complexity: O(n)
+  # Space complexity: O(1)
+  ###
+  def reverseRecursiveList(node)
+    # After reaching end of list we point head to end node and return
+    if node.next == nil
+      @head = node
+      return
+    end
+    reverseRecursiveList(node.next)
+    # Recursion starts folding up
+    temp = node.next
+    temp.next = node
+    node.next = nil
   end
 end
 
