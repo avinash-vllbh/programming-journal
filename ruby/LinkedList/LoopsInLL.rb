@@ -1,4 +1,5 @@
 # Write a function to determine if a singly linked list has a loop.
+
 require 'pry'
 require_relative 'SingleLinkedList'
 class LoopsInLL < SingleLinkedList
@@ -29,8 +30,9 @@ class LoopsInLL < SingleLinkedList
       if visited_hash[current_node].nil?
         visited_hash[current_node] = true
       else
-        puts "Loops exist in Linked List"
+        puts "Loop exist in Linked List"
         # Closing the loop by making the prev nodes next pointer as nil
+        puts "closing the loop at #{current_node.value}"
         prev_node.next = nil
         break
       end
@@ -55,25 +57,37 @@ class LoopsInLL < SingleLinkedList
       node1 = node1.next
       node2 = node2.next.next
       if node1 == node2 #Loop exists and node1 can be anynode in the loop
-        return "Loops exists in the given LinkedList"
-        removeLoop(node1)
+        puts "Loop exists in the given LinkedList"
+        return removeLoop(node1)
       end
     end
-    return "No loops in the LinkedList"
+    puts "No loop in the LinkedList"
   end
 
   def removeLoop(loop_node)
     current_node = head
+    current_loop = loop_node
     while(current_node != nil)
       current_loop = loop_node
       while (current_loop.next != loop_node && current_loop.next != current_node)
-
+        current_loop = current_loop.next
+      end
+      # Loops starts where current_node meets current_loop.next
+      if current_loop.next == current_node
+        puts "#{current_node.value} is the begining of the loop"
+        break
+      else
+        current_node = current_node.next
       end
     end
+    puts "closing the loop"
+    # Closing the loop by making the prev nodes next pointer as nil
+    current_loop.next = nil
+    print
   end
 end
 
 loops_check = LoopsInLL.new
 loops_check.addToList
-loops_check.checkLoopsHashing
-# puts loops_check.checkLoopsExist
+# loops_check.checkLoopsHashing
+loops_check.checkLoopsExist
