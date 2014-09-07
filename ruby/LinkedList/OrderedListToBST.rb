@@ -1,5 +1,6 @@
 # Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
 require 'pry'
+require_relative 'SingleLinkedList'
 class TreeNode
   attr_accessor :value, :left, :right
   def initialize(value = nil)
@@ -7,37 +8,20 @@ class TreeNode
   end
 end
 class OrderedListToBST
-  # attr_accessor :root
+  attr_accessor  :list
+
+  def initialize
+    @list = SingleLinkedList.new
+  end
 
   ###
-  # Add an element to BST through iteration
+  # create an ordered list
   ###
-  def additeratielyToBST(root, value)
-    if root.nil?
-      root = TreeNode.new(value)
-    else
-      current_node = root
-      while current_node
-        if value < current_node.value
-          if current_node.left == nil
-            # Adding the new value to the tree
-            current_node.left = TreeNode.new(value)
-            return root# Added the element, retrun reference to root of the tree
-          else
-            current_node = current_node.left
-          end
-        else
-          if current_node.right == nil
-            # Adding the new value to the tree
-            current_node.right = TreeNode.new(value)
-            return root# Added the element, retrun reference to root of the tree
-          else
-            current_node = current_node.right
-          end
-        end
-      end
+  def createOrderedList
+    # [1,2,3,4,5,6,7,8,10,12,15,16,20].each do |x|
+    [1,2,3,4,5,6,7,8,9].each do |x|
+      list.add(x)
     end
-    return root
   end
 
   ###
@@ -54,47 +38,59 @@ class OrderedListToBST
     return root
   end
 
-  def addRandomElementsToBST
-    root = nil
-    [10, 5, 13, 6, 3, 10, 12, 11].each do |i|
-      root = insertToBST(root, i)
-    end
-    # [10, 5, 13, 6, 3, 10, 12, 11].each do |i|
-    #   root = additeratielyToBST(root, i)
-    # end
-    return root
-  end
-
   # Printing binary tree through pre-order traversal
   def printBST(root)
     return if root == nil
     puts root.value
     if root.left != nil
+      puts "Left of #{root.value}"
       printBST(root.left)
     end
     if root.right !=nil
+      puts "Right of #{root.value}"
       printBST(root.right)
     end
   end
 
-  def searchBST(root, element)
-    return if root == nil
-    return "Found" if root.value == element
-    if element < root.value
-      searchBST(root.left, element)
-    else
-      searchBST(root.right, element)
+  ###
+  # Find the middle node and insert it into tree
+  # Call the same method on left sublist and right sublist of middle node
+  # Time complexity: O(nlogn) [O(n) --> To find the middle element of the list, O(logn) --> To add the element to the list]
+  # Space complexity: O(n) [since we are creating a tree of size of list]
+  ###
+  def createBSTFromList(start_node, end_node, root)
+    return root if start_node == nil || end_node == nil
+    if start_node == end_node
+      root = insertToBST(root, start_node.value)
+      return root
     end
+    node1 = start_node
+    node2 = start_node.next
+    prev_node = nil
+    # Find the middle node of sub-list
+    while node2 != end_node && node2 != nil && node2.next != nil
+      prev_node = node1
+      node1 = node1.next 
+      node2 = node2.next.next
+    end
+    # Inserting middle node
+    root = insertToBST(root, node1.value)
+    # recursively calling the method on left sublist
+    root = createBSTFromList(start_node, prev_node, root)
+    # recursively calling the method on right sublist
+    root = createBSTFromList(node1.next, end_node, root)
+    return root
   end
-
 end
 
 bst = OrderedListToBST.new
-root = bst.addRandomElementsToBST
-# puts bst.root
-bst.printBST(root)
-if bst.searchBST(root,11)
-  puts "Element found"
-else
-  puts "Element not found"
+bst.createOrderedList
+bst.list.print
+current_node = bst.list.head
+while current_node.next != nil
+  current_node = current_node.next
 end
+last_node = current_node
+root = nil
+root = bst.createBSTFromList(bst.list.head, last_node, root)
+bst.printBST(root)
