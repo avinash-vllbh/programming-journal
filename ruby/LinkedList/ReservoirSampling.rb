@@ -22,7 +22,7 @@ class ReservoirSampling
   ###
   # creates a random sample using reservoir sampling algorithm
   # First creates a reservoir of size x from first x elements, then randomize adding further elements to it.
-  # Time complexity: O(n)
+  # Time complexity: O(n) ==> we have to parse the entire list at least once.
   ###
   def randomSample(x)
     return ArgumentError.new("Not a valid integer") unless (Integer(x) rescue false)
