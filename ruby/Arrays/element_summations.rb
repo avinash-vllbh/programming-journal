@@ -3,7 +3,7 @@ require 'pry'
 
 # Sort the given array - quick sort - tc: O(nlogn)
 # Fix the first element and sum the following elements and binary search of the sum in the remaining array
-# Time complexity: O(n2)
+# Time complexity: O(n2) ie. [O(nlogn)+O(n2+logn)]=> for height values of n O(n2)
 # space complexity: O(1)
 def check_sum(array)
   p array
