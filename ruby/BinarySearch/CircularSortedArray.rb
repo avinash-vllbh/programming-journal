@@ -1,6 +1,6 @@
 ###
 # Find a element in a circular sorted array with no duplicates
-# Time complexity: O(n)
+# Time complexity: O(logn)
 # Space complexity: O(1)
 ###
 def findElement(array, x)
@@ -30,7 +30,7 @@ end
 
 ###
 # Find how many times a given circularly sorted array is rotated
-# Time complexity: O(n)
+# Time complexity: O(logn)
 # Space complexity: O(1)
 ###
 def countRotations(array)
