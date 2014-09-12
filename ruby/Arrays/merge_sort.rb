@@ -25,4 +25,13 @@ def merge(left, right)
   result + left + right #Either left or right array are empty
 end
 
-p merge_sort([3,4,8,9,11,10,5,1,6])         
+def two_unsorted_to_sorted_single(first, second)
+  puts "first array is #{first}"
+  first = merge_sort(first)
+  puts "second array is #{second}"
+  second = merge_sort(second)
+  puts "Merged into single sorted array"
+  p merge(first, second)
+end
+
+two_unsorted_to_sorted_single([3,4,8,9,11,10,5,1,6], [1,7,20,5,6])
