@@ -25,6 +25,7 @@ def merge(left, right)
   result + left + right #Either left or right array are empty
 end
 
+# Time complexity: O(mlogm) + O(nlogn) + O(m+n)
 def two_unsorted_to_sorted_single(first, second)
   puts "first array is #{first}"
   first = merge_sort(first)
