@@ -51,7 +51,7 @@ def  reverseBitsEfficient(x)
     x = tmp1|tmp2
     puts x.to_s(2)
 end
-# reverseBitsEfficient(39)
+reverseBitsEfficient(39)
 
 
 ###
