@@ -35,6 +35,7 @@ end
 # number % 37 will be the index of the letter in letters array
 # Decrease the number until it's less than 259,
 #   which is where the hash function starts hashing any valid string with
+# Time complexity: O()
 def unhash(h)
   begin
     h = Integer(h)

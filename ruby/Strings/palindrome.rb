@@ -14,7 +14,13 @@ end
 # puts isPalindrome("lol")
 # puts isPalindrome("trert")
 
+
 # Longest palindrome substring in a string
+# Dynamic programming
+# Time complexity : O(n**2)
+# Space complexity : O(n**2)
+#       Auxialiary space of size O(n**2) is used for the matrix
+
 def longestPalindromeDP(string)
   n = string.size
   lbegin = 0
@@ -24,7 +30,7 @@ def longestPalindromeDP(string)
   for i in 0...n
     array[i][i] = true;
   end
-  # Two consecutive letters if equal are a palindrom
+  # Two consecutive letters if equal are a palindrome
   for i in 0...n-1
     if string[i] == string[i+1]
       array[i][i+1] = true
