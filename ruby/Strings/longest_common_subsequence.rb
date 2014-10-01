@@ -61,4 +61,4 @@ def tracingLCS(lcs_grid, string1, string2, i, j)
   end
 end
 
-lcs("ACCGGGTTAC", "AGGACCA")
+# lcs("ACCGGGTTAC", "AGGACCA")

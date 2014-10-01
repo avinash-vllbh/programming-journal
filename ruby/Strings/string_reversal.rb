@@ -80,7 +80,7 @@ def strPermEfficient(string, k, n)
   end
 end
 
-strPermEfficient("dogs", 0, 3)
+# strPermEfficient("dogs", 0, 3)
 
 
 

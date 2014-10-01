@@ -41,7 +41,6 @@ def longestPalindromeDP(string)
     for i in 0...n-len+1
       j = i+len-1
       if string[i] == string[j] && array[i+1][j-1]
-        binding.pry
         array[i][j] = true
         lbegin = i
         maxLen = len
@@ -52,11 +51,11 @@ def longestPalindromeDP(string)
   p string[lbegin, maxLen]
 end
 
-longestPalindromeDP("cayak")
+# longestPalindromeDP("cayak")
+# longestPalindromeDP("testingnight")
 
 def lpManacher(s)
   p = Array.new(2*s.size - 1) { iii }
 end
-longestPalindromeDP("testingnight")
 # Check if a given string is a rotation of a palindrome
                                                                         

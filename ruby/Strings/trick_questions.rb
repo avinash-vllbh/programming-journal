@@ -32,7 +32,11 @@ end
 # Eg input: 20 => output: "twenty"
 
 def numberToText(number)
-  return "Invalid" if number > 1000
+  begin
+    number = Integer(number)
+  rescue ArgumentError
+    return ArgumentError.new("Invalid argument given")
+  end
   ones = { 1 => "one",2 => "two",3 => "three",4 => "four",5 => "five",6 => "six",7 => "seven",
                   8 => "eight",9 => "nine", 10 => "ten", 11 => "eleven", 12 => "twelve",13=>"thirteen",
                   14 => "fourteen", 15 => "fifteen", 16 => "sixteen", 17 => "seventeen", 
@@ -59,23 +63,21 @@ def numberToText(number)
       str << tens[quo*10]
       str << ones[rem]
     end
+  when number == 1000
+    str << "One Thousand"
+  when number > 1000
+    str << "You gave me #{number} - No idea what to do with it"
   end
-  puts str.join(" ")
+  return str.join(" ")
 end
-
-numberToText(50)
-numberToText(10)
-numberToText(55)
-numberToText(255)
-numberToText(999)
 
 ###
 # Print 1 to 1000 without using any loops or conditional statements
 ###
-@i = 0;
-
 def pp()
-  print @i
+  @collection ||= []
+  @i ||= 0
+  @collection << @i
   @i += 1
 end
 def a()
@@ -93,9 +95,11 @@ def c()
 end
 def printAll()
   c();c();c();c();c();c();c();c();
+  pp()
+  return @collection
 end
 
-# printAll()
+p printAll() == (0..1000).to_a
 
 
 ###
