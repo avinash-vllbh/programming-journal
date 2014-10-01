@@ -53,6 +53,10 @@ def longestPalindromeDP(string)
 end
 
 longestPalindromeDP("cayak")
+
+def lpManacher(s)
+  p = Array.new(2*s.size - 1) { iii }
+end
 longestPalindromeDP("testingnight")
 # Check if a given string is a rotation of a palindrome
                                                                         
