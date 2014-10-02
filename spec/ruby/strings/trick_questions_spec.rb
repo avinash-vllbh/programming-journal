@@ -53,6 +53,21 @@ describe "#romanToInteger" do
   end
 end
 
+describe "#longestSubString" do
+  it "returns the correct size of the longest substring with unique chars" do
+    expect(longestSubString("abcabcbb")).to eq(3)
+  end
+  it "returns the longest substring if an earilier found string less than it's length" do
+    expect(longestSubString("hehellmnmnpqpqr")).to eq(4)
+  end
+  it "returns 1 if all chars are same" do
+    expect(longestSubString("bbbb")).to eq(1)
+  end
+  it "can handle edge cases of string being empty" do
+    expect(longestSubString("")).to eq(0)
+  end
+end
+
 describe "#replaceMatchingPattern" do
   it "returns string after replacing it with matching pattern" do
     expect(replaceMatchingPattern("hellello", "ell", "x")).to eq("hxo")

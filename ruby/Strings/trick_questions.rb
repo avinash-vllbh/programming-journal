@@ -69,6 +69,43 @@ def romanToInteger(string)
 end
 
 ###
+# Length of longest substring without repeating characters
+# E.g. longest substring without repeating characters for abcabcbb is "abc" length is 3
+def longestSubString(string)
+  return string.size if string.size <= 1
+  # To keep track of longest substring without repeating characters
+  hash = Hash.new
+  maxLen = 0
+  maxStart = 0
+  maxFinish = 0
+  # To keep track of current substring without repeating characters
+  len = 0
+  start = 0
+  finish = 0
+  while finish < string.size
+    if hash[string[finish]].nil? # Char is not visited so-far for this sub string
+      # Add to hash as visited and increase the length
+      hash[string[finish]] = finish
+      finish += 1
+      len += 1
+    else # Found a reapeting character in current substring
+      # Check if current substring is max length
+      # Again start looking from next char of visited's first time
+      if len > maxLen
+        maxLen = len
+        maxStart = start
+        maxFinish = finish
+      end
+      len = 0
+      start = finish = hash[string[finish-1]]+1
+      hash = {}
+    end
+  end
+  # puts string[maxStart..maxFinish-1] #print the substring tooo
+  return maxLen
+end
+
+###
 # Print 1 to 1000 without using any loops or conditional statements
 ###
 def pp()
