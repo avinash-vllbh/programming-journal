@@ -1,4 +1,3 @@
-require 'pry'
 ###
 # check if a string is a palindrome
 # Time complexity: O(n/2)
@@ -6,25 +5,20 @@ require 'pry'
 def isPalindrome(string)
   for i in 0...string.size
     break if i > string.size/2
-    return "false" unless string[i] == string[string.size-i-1]
+    return false unless string[i] == string[string.size-i-1]
   end
-  return "true"
+  return true
 end
-
-# puts isPalindrome("lol")
-# puts isPalindrome("trert")
-
 
 # Longest palindrome substring in a string
 # Dynamic programming
 # Time complexity : O(n**2)
 # Space complexity : O(n**2)
-#       Auxialiary space of size O(n**2) is used for the matrix
-
+# Auxialiary space of size O(n**2) is used for the matrix
 def longestPalindromeDP(string)
   n = string.size
   lbegin = 0
-  maxLen = 0
+  maxLen = 1
   array = Array.new(n){Array.new(n)}
   # A char in itself is a palindrome
   for i in 0...n
@@ -48,11 +42,9 @@ def longestPalindromeDP(string)
     end
   end
   # print the array starting from lbegin to maxLen of the substring
-  p string[lbegin, maxLen]
+  return string[lbegin, maxLen]
 end
 
-# longestPalindromeDP("cayak")
-# longestPalindromeDP("testingnight")
 
 def lpManacher(s)
   p = Array.new(2*s.size - 1) { iii }

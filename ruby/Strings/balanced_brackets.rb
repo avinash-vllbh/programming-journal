@@ -6,12 +6,11 @@ require_relative '../Stack/stack'
 #     Pop the element from stack if there is a closing braces, also checking for its match to the popped brace
 # Time complexity: O(n)
 # Space complexity: O(n)
-###
 def checkBracketsBalanced(string)
   opening_braces = ["[","{","("]
   closing_braces = ["]","}",")"]
   # A sting shouldn't start with a closing brace
-  return "Unbalanced braces" if closing_braces.include?(string[0])
+  return false if closing_braces.include?(string[0])
   stack = Stack.new
   for i in 0...string.size
     if opening_braces.include?(string[i])
@@ -19,24 +18,19 @@ def checkBracketsBalanced(string)
     else
       if closing_braces.include?(string[i])
         matching_open_brace = opening_braces[closing_braces.index(string[i])]
-        return "Unbalanced braces" unless matching_open_brace == stack.pop
+        return false unless matching_open_brace == stack.pop
       end
     end
   end
   if stack.is_stack_bottom?
-    return "balanced braces"
+    return true
   else
-    return "Unbalanced braces"
+    return false
   end
 end
 
-# puts checkBracketsBalanced("({[]})")
-# puts checkBracketsBalanced("([{]})")
-# puts checkBracketsBalanced("(avi[nash{hello}])2<43")
-# puts checkBracketsBalanced("(avi[nash{hello]})2<4>3")
-
 def checkBracketsRecursive(string)
-  return if string.empty? or string == nil
+  return true if string.empty? or string == nil
 
   # Declaring as instance varaible, thus won't be overwritten during recursion
   @string ||= string
@@ -49,12 +43,9 @@ def checkBracketsRecursive(string)
   else
     if @closing_braces.include?(string[0])
       matching_open_brace = @opening_braces[@closing_braces.index(string[0])]
-      return "Unbalanced braces" unless matching_open_brace == @stack.pop 
+      return false unless matching_open_brace == @stack.pop 
     end
   end
   return checkBracketsRecursive(string[1..-1])
   # Should check for stack emptyness too
 end
-
-# puts checkBracketsRecursive("{abc]")
-# puts checkBracketsRecursive("[abc]") ? "Unbalanced braces" : "balanced braces"

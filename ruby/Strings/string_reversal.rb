@@ -1,17 +1,13 @@
 ###
 # Reverse a string
 # Time complexity: O(n)
-
 def reverse(string)
+  return nil if string.empty?
   for i in 0...string.size/2
     string[i], string[string.size-i-1] = string[string.size-i-1], string[i]
   end
   return string
 end
-# reverse("test")
-# reverse("hello")
-# reverse("avinash")
-
 
 ###
 # Reverse all the words in a given sentence
@@ -20,7 +16,7 @@ end
 #       Just the words are reversed now
 # Time complexity: O(n)
 # Space complexity: O(1)
-#        Auxiliary space doesn't grow with input size
+#       Auxiliary space doesn't grow with input size
 def reverseWords(sentence)
   sentence = reverse(sentence)
   words = sentence.split(/ /)
@@ -28,17 +24,14 @@ def reverseWords(sentence)
   words.join(" ")
 end 
 
-# puts reverseWords("hi avi how are you")
- 
-
 ###
 # Find all permutations of a string
-#    E.g "dog" => ["dog", "dgo", "odg", "ogd", "gdo", "god"]
+#       E.g "dog" => ["dog", "dgo", "odg", "ogd", "gdo", "god"]
 # Strategy recursion
 #       Fix char at one position and permutate the rest of the string
 # Time complexity: O(n*n!)
 # Space complexity: O(n*n!)
-# => Auxiliary space increases to store the array of permutations
+#       Auxiliary space increases to store the array of permutations
 require 'pry'
 def stringPermutations(string)
   return [string] if string.size <= 1
@@ -57,17 +50,14 @@ def stringPermutations(string)
   return permutations
 end
 
-# perms = stringPermutations("dogs")
-# p perms
-
 ###
 # Find all permutations of a string
-#    E.g "dog" => ["dog", "dgo", "odg", "ogd", "gdo", "god"]
+#       E.g "dog" => ["dog", "dgo", "odg", "ogd", "gdo", "god"]
 # Strategy recursion
 #       Fix char at one position and permutate the rest of the string
 # Time complexity: O(n*n!)
 # Space complexity: O(1)
-#         Auxiliary space doesn't grow with input string size
+#       Auxiliary space doesn't grow with input string size
 def strPermEfficient(string, k, n)
   if k == n
     puts string
@@ -79,8 +69,3 @@ def strPermEfficient(string, k, n)
     end
   end
 end
-
-# strPermEfficient("dogs", 0, 3)
-
-
-
