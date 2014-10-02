@@ -25,6 +25,34 @@ describe "#numberToText" do
   end
 end
 
+describe "#romanToInteger" do
+  context "when given valid roman numerical strings as input" do
+    it "returns 8 for VIII" do
+      expect(romanToInteger("VIII")).to eq(8)
+    end
+    it "returns 14 for XIV" do
+      expect(romanToInteger("XIV")).to eq(14)
+    end
+    it "returns 59 for LIX" do
+      expect(romanToInteger("LIX")).to eq(59)
+    end
+    it "returns 27 for XXVII" do
+      expect(romanToInteger("XXVII")).to eq(27)
+    end
+    it "returns 96 for XCVI" do
+      expect(romanToInteger("XCVI")).to eq(96)
+    end
+  end
+  context "when given invalid roman numeral strings as input" do
+    it "returns nil for empty string" do
+      expect(romanToInteger("")).to be nil
+    end
+    it "raises error for invalid roman numerals" do
+      expect(romanToInteger("XYVI")).to be_instance_of(NoMethodError)
+    end
+  end
+end
+
 describe "#replaceMatchingPattern" do
   it "returns string after replacing it with matching pattern" do
     expect(replaceMatchingPattern("hellello", "ell", "x")).to eq("hxo")
@@ -34,6 +62,20 @@ describe "#replaceMatchingPattern" do
   end
   it "returns the same string if no match is found" do
     expect(replaceMatchingPattern("helloavi", "pqr", "x")).to eq("helloavi")
+  end
+end
+
+describe "#countUnique" do
+  let(:input) {%w(hi hello hw how are you hi hw heello)}
+  let(:result) {7}
+  it "returns the correct number of unique strings in a collection" do
+    expect(countUnique(input)).to eq(result)
+  end
+  it "returns 1 if there is only single element in array" do
+    expect(countUnique(["test"])).to eq(1)
+  end
+  it "returns 0 if array is empty" do
+    expect(countUnique([])).to eq(0)
   end
 end
 

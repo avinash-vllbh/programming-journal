@@ -44,6 +44,31 @@ def numberToText(number)
 end
 
 ###
+# Print the integer equivalents of a given roman numeral
+def romanToInteger(string)
+  return nil if string.empty? || string.nil?
+  string.upcase!
+  values = {"I" => 1, "V" => 5, "X" => 10, "L" => 50, "C" => 100}
+  precedence = {"I" => 1, "V" => 2, "X" => 3, "L" => 4, "C" => 5}
+  number = values[string[string.size-1]]
+  if string.size > 1
+    for x in 0..string.size-2
+      i = string.size-2-x
+      begin
+        if precedence[string[i]] >= precedence[string[i+1]]
+          number = number + values[string[i]]
+        else
+          number = number - values[string[i]]
+        end
+      rescue NoMethodError
+        return NoMethodError.new("Invalid roman numeral")
+      end
+    end
+  end
+  return number
+end
+
+###
 # Print 1 to 1000 without using any loops or conditional statements
 ###
 def pp()
@@ -75,6 +100,8 @@ require 'pry'
 # Replace all occurances of given pattern to X, for example given that "abc", replace 
 # "abcdeffdfegabcabc" to "XdeffdfegX"
 # catch is to replace even contiguous patterns with single replacement
+# Time complexity: O(mn)
+# Space complexity: O(1)
 def replaceMatchingPattern(string, pattern, replacement)
   return string if string.nil? || pattern.nil? || replacement.nil?
   pStart = -1
@@ -126,13 +153,20 @@ end
 
 ###
 # Find the number of unique strings in a collection of strings
-#
+# Time complexity: O(n)
+# Space complexity: O(n)
+# Auxiliary space increase with increase of input size, to store the hash
 def countUnique(array)
-  p array
+  return array.size if array.size <= 1
+  hash = Hash.new
+  array.each do |key|
+    # Add element to hash if it's not already there
+    if hash[key].nil?
+      hash[key] = true
+    end
+  end
+  return hash.keys.size
 end
-
-array = %w(hi hello hw how are you hi hw heello)
-# countUnique(array)
 
 def getMaxPossibleString(number)
   maxStr = ""
