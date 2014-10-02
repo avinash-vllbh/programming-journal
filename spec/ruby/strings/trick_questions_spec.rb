@@ -25,6 +25,18 @@ describe "#numberToText" do
   end
 end
 
+describe "#replaceMatchingPattern" do
+  it "returns string after replacing it with matching pattern" do
+    expect(replaceMatchingPattern("hellello", "ell", "x")).to eq("hxo")
+  end
+  it "returns string after replacing it with matching contiguous pattern" do
+    expect(replaceMatchingPattern("abcdeffdfegabcabc", "abc", "X")).to eq("XdeffdfegX")
+  end
+  it "returns the same string if no match is found" do
+    expect(replaceMatchingPattern("helloavi", "pqr", "x")).to eq("helloavi")
+  end
+end
+
 describe "#printAll" do
   let(:result) {(0..1000).to_a}
   it "prints all numbers from 0 to 1000 without using loops or conditions" do

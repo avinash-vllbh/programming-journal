@@ -1,33 +1,5 @@
 require 'pry'
 ###
-# Find the number of unique strings in a collection of strings
-#
-def countUnique(array)
-  p array
-end
-
-array = %w(hi hello hw how are you hi hw heello)
-# countUnique(array)
-
-def getMaxPossibleString(number)
-  maxStr = ""
-  for x in 1..number
-    maxStr = maxStr + x.to_s
-  end
-  return maxStr.length
-end
-###
-# given a string with numbers from 1 to 250 and a missing number
-# find the missing number
-def missingNumber(string, max)
-  maxLen = getMaxPossibleString(max)
-  digits = maxLen - string.length
-  
-  p "missing #{maxLen - string.length} digit number"
-end
-# missingNumber("3412678910", 10)
-
-###
 # Print out the text form of numbers from 1 to 1000.
 # Eg input: 20 => output: "twenty"
 
@@ -98,9 +70,49 @@ def printAll()
   pp()
   return @collection
 end
+require 'pry'
+###
+# Replace all occurances of given pattern to X, for example given that "abc", replace 
+# "abcdeffdfegabcabc" to "XdeffdfegX"
+# catch is to replace even contiguous patterns with single replacement
+def replaceMatchingPattern(string, pattern, replacement)
+  return string if string.nil? || pattern.nil? || replacement.nil?
+  pStart = -1
+  pEnd = -1
+  index = 0
+  # Iplace replacement - String content could be changed during execution
+  # thus checking until we reach the end
+  while(string[index] != nil)
+  # string.each_char.with_index do |c, i|
+    if string[index] == pattern[0]
+      pStart = index
+      # get the end of the matching pattern
+      pEnd = getMatchEnd(string, pattern, pStart)
+      if pStart != -1 && pEnd != -1
+        string[pStart..pEnd] = replacement
+      end
+      pStart = -1
+      pEnd = -1
+    end
+    index += 1
+  end
+  return string
+end
 
-p printAll() == (0..1000).to_a
-
+# Return the end index of the matching pattern to be replaced in the string
+def getMatchEnd(string, pattern, start)
+  finish = start + pattern.size-1
+  matchEnd = -1
+  unless string[finish] == nil
+    while string[start..finish] == pattern
+      matchEnd = finish
+      break if string[finish + pattern.size] == nil
+      start = finish + 1
+      finish = finish + pattern.size
+    end
+  end
+  return matchEnd
+end
 
 ###
 # Switch two words in a sentence
@@ -111,3 +123,31 @@ def switch(sentence, i, j)
   sentence = words.join(" ")
   return sentence
 end
+
+###
+# Find the number of unique strings in a collection of strings
+#
+def countUnique(array)
+  p array
+end
+
+array = %w(hi hello hw how are you hi hw heello)
+# countUnique(array)
+
+def getMaxPossibleString(number)
+  maxStr = ""
+  for x in 1..number
+    maxStr = maxStr + x.to_s
+  end
+  return maxStr.length
+end
+###
+# given a string with numbers from 1 to 250 and a missing number
+# find the missing number
+def missingNumber(string, max)
+  maxLen = getMaxPossibleString(max)
+  digits = maxLen - string.length
+  
+  p "missing #{maxLen - string.length} digit number"
+end
+# missingNumber("3412678910", 10)
