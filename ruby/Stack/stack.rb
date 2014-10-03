@@ -43,4 +43,3 @@ class Stack
     @top == -1
   end
 end
-

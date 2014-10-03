@@ -18,6 +18,7 @@ end
 # Space complexity: ????
 ###
 def middle_element(stack)
+  @middle = nil
   @depth ||= 1 # Creates a counter instance variable to keep track of depth of recursion
   @fold ||= 0 # creates a down instance to keep track when recursion is folding up
   return if stack.is_stack_bottom? # Base case - to stop recursion when stack is empty
@@ -26,8 +27,12 @@ def middle_element(stack)
   @depth += 1
   middle_element(stack)
   @fold += 1
-  puts "middle element is #{element}" if @fold == @depth/2
+  if @fold == @depth/2
+    puts "middle element is #{element}" 
+    @middle = element
+  end
+  return @middle
 end
 
-stack = build_stack
-middle_element(stack)
+# stack = build_stack
+# middle_element(stack)

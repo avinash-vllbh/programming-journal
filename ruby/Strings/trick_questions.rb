@@ -71,6 +71,8 @@ end
 ###
 # Length of longest substring without repeating characters
 # E.g. longest substring without repeating characters for abcabcbb is "abc" length is 3
+# Keep track if we have a char as visited by using a hash
+# Time complexity: O(n)
 def longestSubString(string)
   return string.size if string.size <= 1
   # To keep track of longest substring without repeating characters
@@ -90,7 +92,8 @@ def longestSubString(string)
       len += 1
     else # Found a reapeting character in current substring
       # Check if current substring is max length
-      # Again start looking from next char of visited's first time
+      # Again start looking from next char of visited's first time, since
+      # Until that we have already found the max possible unique substring 
       if len > maxLen
         maxLen = len
         maxStart = start
