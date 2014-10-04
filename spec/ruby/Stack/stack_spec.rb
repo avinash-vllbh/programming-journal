@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe Stack do
   subject { Stack.new }
   it "new stack object validates to true" do

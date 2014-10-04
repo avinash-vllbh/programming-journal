@@ -1,11 +1,11 @@
 # $LOAD_PATH<<File.expand_path(File.join('..', 'programming-journal/ruby'), File.dirname(__FILE__))
-# # $LOAD_PATH << ". ./ruby"
+# $LOAD_PATH << ". ./ruby"
 # # $:<< "ruby"
 # # $:<< "./ruby"
 # # $:<< "../ruby"
 # $:<< File.join(File.dirname(__FILE__), '..')
 # Load path is not working
-# Dir["/home/avinash/Desktop/programming-journal/ruby/Strings/*.rb"].each {|file| require_relative file}
+Dir["/home/avinash/Desktop/programming-journal/ruby/Strings/*.rb"].each {|file| require_relative file}
 Dir["/home/avinash/Desktop/programming-journal/ruby/Stack/*.rb"].each {|file| require_relative file}
 
 require 'stringio'
