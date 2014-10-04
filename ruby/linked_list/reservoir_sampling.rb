@@ -1,6 +1,6 @@
 # Given a linked list with unknown length randomly select one node with equal probability for every node in the list
 require 'pry'
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class ReservoirSampling
   attr_accessor  :list
 
@@ -11,7 +11,7 @@ class ReservoirSampling
   ###
   # create an ordered list
   ###
-  def createOrderedList
+  def create_ordered_list
     [1,2,3,4,5,6,7,8,9].each do |x|
       list.add(x)
     end
@@ -24,7 +24,7 @@ class ReservoirSampling
   # First creates a reservoir of size x from first x elements, then randomize adding further elements to it.
   # Time complexity: O(n) ==> we have to parse the entire list at least once.
   ###
-  def randomSample(x)
+  def random_sample(x)
     return ArgumentError.new("Not a valid integer") unless (Integer(x) rescue false)
     sample = Array.new(x) #create a reservoir of size x
 
@@ -54,8 +54,8 @@ class ReservoirSampling
 end
 
 rs = ReservoirSampling.new
-rs.createOrderedList
-random_sample = rs.randomSample(5)
+rs.create_ordered_list
+random_sample = rs.random_sample(5)
 
 random_sample.each do |node|
   puts "randomly picked: #{node.value}"

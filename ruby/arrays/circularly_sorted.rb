@@ -1,6 +1,6 @@
 require 'pry'
 
-def searchElement(array, x)
+def search_element(array, x)
   start = 0
   finish = array.size - 1
   position = binary_search_array(array, start, finish, x)
@@ -42,7 +42,7 @@ def binary_search_array(array, start, finish, x)
   binary_search_array(array, start, finish, x)
 end
 
-searchElement([15, 17, 19, 20, 22, 7, 8, 13, 14], 5)
+search_element([15, 17, 19, 20, 22, 7, 8, 13, 14], 5)
 
 
 ### Count the number of rotations on a given circular sorted array

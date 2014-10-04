@@ -1,7 +1,7 @@
 # Write code to partition a linked list around a value x, 
 # such that all nodes less than x come before all nodes greater than or equal to x. [CTCI, 77]
 
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class PartitionLinkedList < SingleLinkedList
 attr_accessor :random_list, :less_list, :greater_list #:partitioned_list
   def initialize
@@ -14,7 +14,7 @@ attr_accessor :random_list, :less_list, :greater_list #:partitioned_list
   ###
   # 
   ###
-  def partitionLL(x)
+  def partition_ll(x)
     # create a random linked list of size 10
     random_list.createRandomList(10)
     random_list.print
@@ -37,7 +37,7 @@ attr_accessor :random_list, :less_list, :greater_list #:partitioned_list
   end
 
 
-  def addAsNextNode(current_node, value)
+  def add_as_next_node(current_node, value)
     if current_node.next == nil
       current_node.next.value = value
       current_node.next.next = nil
@@ -51,4 +51,4 @@ attr_accessor :random_list, :less_list, :greater_list #:partitioned_list
 end
 
 partition = PartitionLinkedList.new
-partition.partitionLL(5)
+partition.partition_ll(5)

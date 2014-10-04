@@ -1,6 +1,6 @@
 # Find a pair of elements from two sorted lists for which the sum of the elements is a certain value.
 
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 ###
 # => Extending SingleLinkedList to return end node of a list
 ###
@@ -23,7 +23,7 @@ class PairToSum < SingleLinkedList
   ###
   # Prepares two sorted list for us to find the 
   ###
-  def prepSortedLists
+  def prep_sorted_lists
     10.times do |i|
       list1.add(3*i)
       list2.add(5*i)
@@ -37,8 +37,8 @@ class PairToSum < SingleLinkedList
   # for each element in list1 we just need to look at elements less than (sum-node1.value) in List2
   # Time complexity - O(mn)
   ###
-  def findPairToSum(x)
-    prepSortedLists # To prepared two sorted lists
+  def find_pair_to_sum(x)
+    prep_sorted_lists # To prepared two sorted lists
     node1 = list1.head
     node2 = nil
     flag = false
@@ -64,4 +64,4 @@ class PairToSum < SingleLinkedList
   end
 end
 pair = PairToSum.new
-pair.findPairToSum(11)
+pair.find_pair_to_sum(11)

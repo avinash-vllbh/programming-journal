@@ -3,7 +3,7 @@
 # Time complexity: O(n) [we are parsing the array only once]
 # Space complexity: O(1)
 ###
-def maxSumSequence(array)
+def max_sum_sequence(array)
   p array
   max_sum = 0 #sum of max sub sequence
   sum = 0 #sum of each subsequence
@@ -33,9 +33,9 @@ def maxSumSequence(array)
   puts "start: #{sequence_start}, end: #{sequence_end}"
 end
 
-maxSumSequence([4,3,-2,5,-3,-6,2])
-maxSumSequence([-1,2,3,5,-2]) 
-maxSumSequence([-1,-2,-3,-3,-2]) # All negative values would retrun everything as zero
+max_sum_sequence([4,3,-2,5,-3,-6,2])
+max_sum_sequence([-1,2,3,5,-2]) 
+max_sum_sequence([-1,-2,-3,-3,-2]) # All negative values would retrun everything as zero
 
 require 'pry'
 ###
@@ -44,15 +44,15 @@ require 'pry'
 #         T(n) = c1n + c2nlogn => O(n) + O(nlogn) => O(nlogn)
 # Space complexity: O(1)
 ###
-def maxSumSequenceDC(array)
+def max_sum_sequence_dc(array)
   if array.size == 1
     return array.first
   end
   mid = array.size/2
   # Get the max subsequence sum of left half
-  left_max_sum = maxSumSequenceDC(array[0..mid-1])
+  left_max_sum = max_sum_sequence_dc(array[0..mid-1])
   # Get the max subsequence sum of right half
-  right_max_sum = maxSumSequenceDC(array[mid..-1])
+  right_max_sum = max_sum_sequence_dc(array[mid..-1])
   left_sum = -999
   right_sum = -999
   # Get the best possible sum of left half
@@ -70,9 +70,9 @@ def maxSumSequenceDC(array)
   # Return the maximum of three possible sub sequences
   return [left_max_sum, right_max_sum, left_sum+right_sum].max
 end
-dc_max = maxSumSequenceDC([4,3,-2,5,-3,-6,2])
+dc_max = max_sum_sequence_dc([4,3,-2,5,-3,-6,2])
 puts "Max sum using Divide and conquer: #{dc_max}"
-dc_max = maxSumSequenceDC([-1,2,3,5,-2]) 
+dc_max = max_sum_sequence_dc([-1,2,3,5,-2]) 
 puts "Max sum using Divide and conquer: #{dc_max}"
-dc_max = maxSumSequenceDC([-1,-2,-3,-3,-2])
+dc_max = max_sum_sequence_dc([-1,-2,-3,-3,-2])
 puts "Max sum using Divide and conquer: #{dc_max}"

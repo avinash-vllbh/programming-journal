@@ -1,11 +1,11 @@
 # Implement an algorithm to delete a node from a single linked list, given only access to that node. [CTCI, 77]
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class DeleteAccessNode < SingleLinkedList
 
   ###
   # => Creates a random list of size 10 and returns a node at random other than head.
   ###
-  def getRandomNode
+  def get_random_node
     select_node = nil
     createRandomList(10)
     current_node = head
@@ -22,7 +22,7 @@ class DeleteAccessNode < SingleLinkedList
   # => Replace both current nodes value and next pointer with the next nodes value and pointer, which replaces this node with it's next node
   # => Time complexity O(1) [No need to traverse the entire list]
   ##
-  def delAccessNode(node)
+  def del_access_node(node)
     puts "Deleting Node with value: #{node.value} from the list"
     if node.next != nil
       node.value = node.next.value
@@ -35,5 +35,5 @@ class DeleteAccessNode < SingleLinkedList
 end
 
 delNode = DeleteAccessNode.new
-node = delNode.getRandomNode
-delNode.delAccessNode(node)
+node = delNode.get_random_node
+delNode.del_access_node(node)

@@ -4,11 +4,11 @@ describe "#isPalindrome" do
   end
 end
 
-describe "#longestPalindromeDP" do
+describe "#longest_palindrome_dp" do
   it "returns longest palindrome substring in a string" do
-    expect(longestPalindromeDP("cayak")).to eq("aya")
+    expect(longest_palindrome_dp("cayak")).to eq("aya")
   end
   it "returns first char, if a string doesn't have a substring palindrome" do
-    expect(longestPalindromeDP("night")).to eq("n")
+    expect(longest_palindrome_dp("night")).to eq("n")
   end
 end

@@ -1,6 +1,6 @@
 # remove duplicates from an unsorted linked list. [CTCI, 77]
 
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class RemoveDuplicates < SingleLinkedList
   attr_accessor :list_hash
   def initialize
@@ -11,7 +11,7 @@ class RemoveDuplicates < SingleLinkedList
   # Creates a LinkedList of size limit using Ruby's Psuedo Random number generator
   # Iterates from 0 to limit-1 and add's a random number to the list on self
   ###
-  def createRandomList(limit)
+  def create_random_list(limit)
     limit.times do
       add(rand(10))
     end
@@ -24,7 +24,7 @@ class RemoveDuplicates < SingleLinkedList
   # time complexity = O(n) => we loop through the list only once
   # space complexity = O(n) ???
   ###
-  def removeDumplicates
+  def remove_duplicates
     current_node = head.next
     prev_node = head
     @list_hash[head.value] = true
@@ -46,5 +46,5 @@ class RemoveDuplicates < SingleLinkedList
 end
 
 rmDup = RemoveDuplicates.new
-rmDup.createRandomList(10)
-rmDup.removeDumplicates
+rmDup.create_random_list(10)
+rmDup.remove_duplicates

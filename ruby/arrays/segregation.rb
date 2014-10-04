@@ -4,7 +4,7 @@
 # swap the first even element from left and first odd element from right
 # Time complexity: O(n)
 # Space complexity: O(1) => Auxialiary space doesn't increase with array size.
-def arraySegNoOrder(array)
+def array_seg_no_order(array)
   puts "given array is:"
   p array
   left = 0 
@@ -26,13 +26,13 @@ def arraySegNoOrder(array)
   puts "segrated array with odds infront of evens"
   p array
 end
-arraySegNoOrder([3,4,8,9,11,10,6,1,5])
+array_seg_no_order([3,4,8,9,11,10,6,1,5])
 
 # Segregate array with odds infront of evens also retaining the order of odds and evens
 # Parse the array once for odd's and once more for even's
 # Space complexity: O(n)
 # Time complexity: O(n) => Using auxiliary array of size same as input array
-def arraySegWithOrder(array)
+def array_seg_with_order(array)
   puts "given array is:"
   p array
   seg_array = []
@@ -49,4 +49,4 @@ def arraySegWithOrder(array)
   puts "segrated array with odds infront of evens and retaining order"
   p seg_array
 end
-arraySegWithOrder([3,4,8,9,11,10,6,1,5])
+array_seg_with_order([3,4,8,9,11,10,6,1,5])

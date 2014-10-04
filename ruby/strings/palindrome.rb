@@ -15,7 +15,7 @@ end
 # Time complexity : O(n**2)
 # Space complexity : O(n**2)
 # Auxialiary space of size O(n**2) is used for the matrix
-def longestPalindromeDP(string)
+def longest_palindrome_dp(string)
   n = string.size
   lbegin = 0
   maxLen = 1
@@ -46,7 +46,7 @@ def longestPalindromeDP(string)
 end
 
 
-def lpManacher(s)
+def lp_manacher(s)
   p = Array.new(2*s.size - 1) { iii }
 end
 # Check if a given string is a rotation of a palindrome

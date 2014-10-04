@@ -1,13 +1,13 @@
 # Write an algorithm to find the kth to last element of a singly linked list. [CTCI, 77]
 
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class KthLastElement < SingleLinkedList
   ###
   # Creates a LinkedList of random size using Ruby's Psuedo Random number generator
   # Iterates from 0 to size-1 and add's a random number to the list on self
   ###
   require 'pry'
-  def createRandomList
+  def create_random_list
     list_size = rand(9) + 1
     list_size.times do
       add(rand(10))
@@ -22,7 +22,7 @@ class KthLastElement < SingleLinkedList
   # Time complexity O(n) => traverse the list only once
   # Space complexity O(n) => Axiliary space is just two nodes throughout the execution of the program
   ###
-  def kthLastElement(k)
+  def kth_last_element(k)
     node1 = head
     node2 = head
     k.times do 
@@ -39,5 +39,5 @@ class KthLastElement < SingleLinkedList
 end
 
 knode = KthLastElement.new
-knode.createRandomList
-puts knode.kthLastElement(3)
+knode.create_random_list
+puts knode.kth_last_element(3)

@@ -3,7 +3,7 @@
 # Time complexity: O(logn)
 # Space complexity: O(1)
 ###
-def findElement(array, x)
+def find_element(array, x)
   size = array.size
   start = 0
   finish = size - 1
@@ -33,7 +33,7 @@ end
 # Time complexity: O(logn)
 # Space complexity: O(1)
 ###
-def countRotations(array)
+def count_rotations(array)
   size = array.size
   start = 0
   finish = size - 1
@@ -53,5 +53,5 @@ def countRotations(array)
   return -1
 end
 
-puts "Element is at position: #{findElement([12,10,9,2,3,4,5,6], 4)}"
-puts "Given array is circular sorted: #{countRotations([12,10,9,2,3,4,5,6])}"
+puts "Element is at position: #{find_element([12,10,9,2,3,4,5,6], 4)}"
+puts "Given array is circular sorted: #{count_rotations([12,10,9,2,3,4,5,6])}"

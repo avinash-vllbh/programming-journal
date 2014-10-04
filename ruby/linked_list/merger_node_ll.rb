@@ -3,7 +3,7 @@
 # Write a function to find the intersecting node.
 
 require 'pry'
-require_relative "SingleLinkedList"
+require_relative "single_linked_list"
 
 class MergerNodeLL
   attr_accessor :list1, :list2
@@ -14,7 +14,8 @@ class MergerNodeLL
   end
 
   # Add elements to the list at random with a merger node in them
-  def addToLists
+  def add_to_lists
+
     [1,2,3,4,5,6,7,8].each do |x|
       list1.add(x)
     end
@@ -40,7 +41,7 @@ class MergerNodeLL
   # Space complexity: O(1)
   # Note: This method wouldn't work if the merger is based on addresses too since reversing one list would affect the other
   ###
-  def findMergerValue
+  def find_merger_value
     list1.reverseList # O(m)
     list2.reverseList # O(n)
     node1 = list1.head
@@ -57,7 +58,7 @@ class MergerNodeLL
     end
   end
 
-  def getCountOfList(head)
+  def get_count_list(head)
     current_node = head
     count = 0
     while current_node != nil
@@ -67,7 +68,7 @@ class MergerNodeLL
     return count
   end
 
-  def getIntersectionNode(diff, head1, head2)
+  def get_intersection_node(diff, head1, head2)
     node1 = head1
     node2 = head2
     diff.times do
@@ -87,25 +88,25 @@ class MergerNodeLL
   # Then compare node by node of those two lists
   # Time complexity: O(m+n) Traversing lengths of both the lists
   # Space complexity: O(1) 
-  def findMergerNode
+  def find_merger_node
     list1.print
     list2.print
     node1 = list1.head
     node2 = list2.head
-    c1 = getCountOfList(list1.head)
-    c2 = getCountOfList(list2.head)
+    c1 = get_count_list(list1.head)
+    c2 = get_count_list(list2.head)
     d = (c1-c2).abs
     current_node = nil
     if c1 > c2
-      return getIntersectionNode(d, list1.head, list2.head)
+      return get_intersection_node(d, list1.head, list2.head)
     else
-      return getIntersectionNode(d, list2.head, list1.head)
+      return get_intersection_node(d, list2.head, list1.head)
     end
   end
 end
 
 merger = MergerNodeLL.new
-merger.addToLists
-# puts "The two lists merge at Node with value: #{merger.findMergerNode}"
-intersectionNode = merger.findMergerNode
+merger.add_to_lists
+# puts "The two lists merge at Node with value: #{merger.find_merger_node}"
+intersectionNode = merger.find_merger_node
 puts "The two lists merge at Node with value: #{intersectionNode.value}"

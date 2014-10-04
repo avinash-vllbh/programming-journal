@@ -1,9 +1,9 @@
 # Write a function to determine if a singly linked list has a loop.
 
 require 'pry'
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class LoopsInLL < SingleLinkedList
-  def addToList
+  def add_to_list
     [1,2,3,4,5].each do |x|
       add(x)
     end
@@ -22,7 +22,7 @@ class LoopsInLL < SingleLinkedList
   # Time complexity: O(n)
   # Space Complexity: O(n) [Since hash map grows along with input size]
   ###
-  def checkLoopsHashing
+  def check_loops_hashing
     current_node = head
     prev_node = nil
     visited_hash = Hash.new
@@ -50,7 +50,7 @@ class LoopsInLL < SingleLinkedList
   # Time complexity: O(n)
   # Space Complexity: O(1) [Auxiliary space doesn't grow with input size]
   ###
-  def checkLoopsExist
+  def check_loops_exist
     node1 = head
     node2 = head
     while node1 != nil && node2 != nil && node2.next != nil
@@ -58,13 +58,13 @@ class LoopsInLL < SingleLinkedList
       node2 = node2.next.next
       if node1 == node2 #Loop exists and node1 can be anynode in the loop
         puts "Loop exists in the given LinkedList"
-        return removeLoop(node1)
+        return remove_loop(node1)
       end
     end
     puts "No loop in the LinkedList"
   end
 
-  def removeLoop(loop_node)
+  def remove_loop(loop_node)
     current_node = head
     current_loop = loop_node
     while(current_node != nil)
@@ -88,6 +88,6 @@ class LoopsInLL < SingleLinkedList
 end
 
 loops_check = LoopsInLL.new
-loops_check.addToList
-# loops_check.checkLoopsHashing
-loops_check.checkLoopsExist
+loops_check.add_to_list
+# loops_check.check_loops_hashing
+loops_check.check_loops_exist

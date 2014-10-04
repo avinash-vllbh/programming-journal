@@ -1,6 +1,6 @@
 # Write a function to determine if a singly linked list is a palindrome.
 require 'pry'
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class Palindrome
   attr_accessor :list1, :list2
   
@@ -9,7 +9,7 @@ class Palindrome
     @list2 = SingleLinkedList.new
   end
   
-  def addtoList
+  def add_to_list
     [5].each do |x|
       list1.add(x)
       list2.add(x)
@@ -61,7 +61,7 @@ class Palindrome
     end
     # To recursively reverse the list from the mid point
     # Passing the prev_node2 as additional pointer for reversed half to be merged back to original
-    reverseRecursive(node2, prev_node2)
+    reverse_recursive(node2, prev_node2)
     # Compare first half and second half of the list one step each and retrun if elements doesn't match at any step
     current_first = list1.head
     current_second = prev_node2.next
@@ -73,17 +73,17 @@ class Palindrome
       current_second = current_second.next
     end
     # To recursively reverse back to the original list from the mid point
-    reverseRecursive(prev_node2.next, prev_node2)
+    reverse_recursive(prev_node2.next, prev_node2)
     list1.print
     return "Yep! list is a palindrome"
   end
 
-  def reverseRecursive(node, prev_node)
+  def reverse_recursive(node, prev_node)
     if node.next == nil
       prev_node.next = node
       return
     end
-    reverseRecursive(node.next, prev_node)
+    reverse_recursive(node.next, prev_node)
     temp = node.next
     temp.next = node
     node.next = nil
@@ -91,5 +91,5 @@ class Palindrome
 end
 
 check_palindrome = Palindrome.new
-check_palindrome.addtoList
+check_palindrome.add_to_list
 puts check_palindrome.isPalindromeEfficient

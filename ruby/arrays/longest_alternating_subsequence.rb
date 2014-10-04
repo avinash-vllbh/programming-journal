@@ -1,7 +1,7 @@
 # Longest alternating subsequence - Algorithm from wikipedia
 # Given an array of integers find the longest possible alternating subsequence in the array
 
-def longestZigZag(array)
+def longest_zig_zag(array)
   puts "Given array: #{array}"
   las_array = Array.new(array.size){Array.new}
   las_array[0][0] = array[0] # LIS of array of size 0 would be just that element

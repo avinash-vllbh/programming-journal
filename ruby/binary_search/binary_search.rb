@@ -4,7 +4,7 @@ require 'pry'
 # Time complexity: O(logn)
 # Space complexity: O(1)
 ###
-def iterativeSearch(array, size, x)
+def iterative_search(array, size, x)
   start = 0
   finish = size-1
   while start <= finish
@@ -25,15 +25,15 @@ end
 # Time complexity: O(logn)
 # Space complexity: O(1)
 ###
-def recursiveSearch(array, start, finish, x)
+def recursive_search(array, start, finish, x)
   return -1 if start > finish
   mid = (start+finish)/2
   if array[mid] == x
     return mid
   elsif x < array[mid]
-    return recursiveSearch(array, start, mid-1, x)
+    return recursive_search(array, start, mid-1, x)
   else
-    return recursiveSearch(array, mid+1, finish, x)
+    return recursive_search(array, mid+1, finish, x)
   end
 end
 
@@ -42,7 +42,7 @@ end
 # Time complexity: O(logn)
 # Space complexity: O(1)
 ###
-def findFirstOccurance(array, size, x)
+def find_first_occurance(array, size, x)
   start = 0
   finish = size-1
   result = -1
@@ -66,7 +66,7 @@ end
 # Time complexity: O(logn)
 # Space complexity: O(1)
 ###
-def findLastOccurance(array, size, x)
+def find_last_occurance(array, size, x)
   start = 0
   finish = size-1
   result = -1
@@ -85,9 +85,9 @@ def findLastOccurance(array, size, x)
   return result
 end
 
-puts "iterative search result --> pos: #{iterativeSearch([2,5,7,8,9,12,15], 7, 8)}"
-puts "recursive search result --> pos: #{recursiveSearch([2,5,7,8,9,12,15], 0, 6, 8)}"
+puts "iterative search result --> pos: #{iterative_search([2,5,7,8,9,12,15], 7, 8)}"
+puts "recursive search result --> pos: #{recursive_search([2,5,7,8,9,12,15], 0, 6, 8)}"
 
-puts "First occurance search result --> pos: #{findFirstOccurance([8,8,8,8,8,9,12,15], 8, 8)}"
-puts "last occurance search result --> pos: #{findLastOccurance([8,8,8,8,8,8,12,15], 8, 8)}"
+puts "First occurance search result --> pos: #{find_first_occurance([8,8,8,8,8,9,12,15], 8, 8)}"
+puts "last occurance search result --> pos: #{find_last_occurance([8,8,8,8,8,8,12,15], 8, 8)}"
 

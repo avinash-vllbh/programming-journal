@@ -4,14 +4,14 @@
 # Convert to base 2 string or array and reverse
 # Time complexity: O(n) loop through all the bits
 ###
-def reverseBits(num, size)
+def reverse_bits(num, size)
   # To make the input number into binary of 16 or 32 bit format
   binary = "%0#{size}d" % num.to_s(2) #convert decimal to string of base 2 number
   puts binary
   puts binary.reverse!
   # puts binary.to_i(2) # convert string of base 2 number to decimal
 end
-# reverseBits(39,32)
+# reverse_bits(39,32)
 
 ###
 # Can we do better than O(n) ???
@@ -22,7 +22,7 @@ end
 # Time complexity: O(logn)
 # Space complexity: O(1)
 
-def  reverseBitsEfficient(x)
+def  reverse_bits_efficient(x)
     puts "%032d" % x.to_s(2)
     # //swap each two bits
     # //10101010...
@@ -51,7 +51,7 @@ def  reverseBitsEfficient(x)
     x = tmp1|tmp2
     puts x.to_s(2)
 end
-reverseBitsEfficient(39)
+reverse_bits_efficient(39)
 
 
 ###
@@ -65,7 +65,7 @@ reverseBitsEfficient(39)
 # Time complexity: O(1)
 # Space complexity: O(1)
 
-def swapBitsEvenOdd(x)
+def swap_bits_even_odd(x)
   puts "#{x} --> #{x.to_s(2)}"
   # Bitwise AND of a number with 0xAAAAAAAA gives all even bits of that number
   tmp1 = (x&0xAAAAAAAA)>>1; # 0xAAAAAAAA = "101010...10" 32 bit notation with all even positions as 1's
@@ -76,4 +76,4 @@ def swapBitsEvenOdd(x)
   puts "#{x} --> #{x.to_s(2)}"
 end
 
-swapBitsEvenOdd(89)
+swap_bits_even_odd(89)

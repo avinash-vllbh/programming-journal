@@ -17,7 +17,7 @@ end
 # Time complexity: O(n)
 # Space complexity: O(1)
 #       Auxiliary space doesn't grow with input size
-def reverseWords(sentence)
+def reverse_words(sentence)
   sentence = reverse(sentence)
   words = sentence.split(/ /)
   words.map! { |word| reverse(word) }
@@ -33,7 +33,7 @@ end
 # Space complexity: O(n*n!)
 #       Auxiliary space increases to store the array of permutations
 require 'pry'
-def stringPermutations(string)
+def string_permutations(string)
   return [string] if string.size <= 1
   permutations = []
   for i in 0...string.size
@@ -41,7 +41,7 @@ def stringPermutations(string)
     # str = string => would just point str to string object and str.slice would affect string too
     str = string.dup
     fix = str.slice!(i) # Removes the char at index i and retrun the removed char
-    perms = stringPermutations(str)
+    perms = string_permutations(str)
     perms.each do |perm|
       # binding.pry
       permutations << fix + perm
@@ -58,13 +58,13 @@ end
 # Time complexity: O(n*n!)
 # Space complexity: O(1)
 #       Auxiliary space doesn't grow with input string size
-def strPermEfficient(string, k, n)
+def str_perm_efficient(string, k, n)
   if k == n
     puts string
   else
     for i in k..n
       string[i], string[k] = string[k], string[i] # fixing one element
-      strPermEfficient(string, k+1, n) # calling perm on remaining string
+      str_perm_efficient(string, k+1, n) # calling perm on remaining string
       string[k], string[i] = string[i], string[k]  # Swap back the previously swapped elements
     end
   end

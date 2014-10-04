@@ -35,7 +35,7 @@ class SingleLinkedList
   # Creates a LinkedList of size limit using Ruby's Psuedo Random number generator
   # Iterates from 0 to limit-1 and add's a random number to the list on self
   ###
-  def createRandomList(limit)
+  def create_random_list(limit)
     limit.times do
       add(rand(10))
     end
@@ -44,9 +44,9 @@ class SingleLinkedList
   ###
   # => Creates a random list of size 10 and returns a node at random other than head.
   ###
-  def getRandomNode
+  def get_random_node
     select_node = nil
-    createRandomList(10)
+    create_random_list(10)
     current_node = head
     # Select a random node from the list to delete just that node.
     (rand(8)+1).times do 
@@ -110,7 +110,7 @@ class SingleLinkedList
   # Reverse a linked list iteratively
   # Time complexity O(n)
   # Space complexity O(1)
-  def reverseList
+  def reverse_list
     prev = nil
     current = head
     next_node = nil
@@ -131,13 +131,13 @@ class SingleLinkedList
   # Time complexity: O(n)
   # Space complexity: O(1)
   ###
-  def reverseRecursiveList(node)
+  def reverse_recursive_list(node)
     # After reaching end of list we point head to end node and return
     if node.next == nil
       @head = node
       return
     end
-    reverseRecursiveList(node.next)
+    reverse_recursive_list(node.next)
     # Recursion starts folding up
     temp = node.next
     temp.next = node

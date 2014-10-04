@@ -1,12 +1,12 @@
 require 'pry'
-require_relative '../Stack/stack'
+require_relative '../stack/stack'
 ###
 # Check for balanced paranthesis in an expression
 #     Push all the opening braces into the stack
 #     Pop the element from stack if there is a closing braces, also checking for its match to the popped brace
 # Time complexity: O(n)
 # Space complexity: O(n)
-def checkBracketsBalanced(string)
+def check_brackets_balanced(string)
   opening_braces = ["[","{","("]
   closing_braces = ["]","}",")"]
   # A sting shouldn't start with a closing brace
@@ -29,7 +29,7 @@ def checkBracketsBalanced(string)
   end
 end
 
-def checkBracketsRecursive(string)
+def check_brackets_recursive(string)
   return true if string.empty? or string == nil
 
   # Declaring as instance varaible, thus won't be overwritten during recursion
@@ -46,6 +46,6 @@ def checkBracketsRecursive(string)
       return false unless matching_open_brace == @stack.pop 
     end
   end
-  return checkBracketsRecursive(string[1..-1])
+  return check_brackets_recursive(string[1..-1])
   # Should check for stack emptyness too
 end

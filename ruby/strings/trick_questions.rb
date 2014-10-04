@@ -3,7 +3,7 @@ require 'pry'
 # Print out the text form of numbers from 1 to 1000.
 # Eg input: 20 => output: "twenty"
 
-def numberToText(number)
+def number_to_text(number)
   begin
     number = Integer(number)
   rescue ArgumentError
@@ -45,7 +45,7 @@ end
 
 ###
 # Print the integer equivalents of a given roman numeral
-def romanToInteger(string)
+def roman_to_integer(string)
   return nil if string.empty? || string.nil?
   string.upcase!
   values = {"I" => 1, "V" => 5, "X" => 10, "L" => 50, "C" => 100}
@@ -73,13 +73,13 @@ end
 # E.g. longest substring without repeating characters for abcabcbb is "abc" length is 3
 # Keep track if we have a char as visited by using a hash
 # Time complexity: O(n)
-def longestSubString(string)
+def longest_sub_string(string)
   return string.size if string.size <= 1
   # To keep track of longest substring without repeating characters
   hash = Hash.new
-  maxLen = 0
-  maxStart = 0
-  maxFinish = 0
+  max_len = 0
+  max_start = 0
+  max_finish = 0
   # To keep track of current substring without repeating characters
   len = 0
   start = 0
@@ -94,18 +94,18 @@ def longestSubString(string)
       # Check if current substring is max length
       # Again start looking from next char of visited's first time, since
       # Until that we have already found the max possible unique substring 
-      if len > maxLen
-        maxLen = len
-        maxStart = start
-        maxFinish = finish
+      if len > max_len
+        max_len = len
+        max_start = start
+        max_finish = finish
       end
       len = 0
       start = finish = hash[string[finish-1]]+1
       hash = {}
     end
   end
-  # puts string[maxStart..maxFinish-1] #print the substring tooo
-  return maxLen
+  # puts string[max_start..max_finish-1] #print the substring tooo
+  return max_len
 end
 
 ###
@@ -130,7 +130,7 @@ end
 def c()
   b();b();b();b();b();
 end
-def printAll()
+def print_all()
   c();c();c();c();c();c();c();c();
   pp()
   return @collection
@@ -142,7 +142,7 @@ require 'pry'
 # catch is to replace even contiguous patterns with single replacement
 # Time complexity: O(mn)
 # Space complexity: O(1)
-def replaceMatchingPattern(string, pattern, replacement)
+def replace_matching_pattern(string, pattern, replacement)
   return string if string.nil? || pattern.nil? || replacement.nil?
   pStart = -1
   pEnd = -1
@@ -154,7 +154,7 @@ def replaceMatchingPattern(string, pattern, replacement)
     if string[index] == pattern[0]
       pStart = index
       # get the end of the matching pattern
-      pEnd = getMatchEnd(string, pattern, pStart)
+      pEnd = get_match_end(string, pattern, pStart)
       if pStart != -1 && pEnd != -1
         string[pStart..pEnd] = replacement
       end
@@ -167,7 +167,7 @@ def replaceMatchingPattern(string, pattern, replacement)
 end
 
 # Return the end index of the matching pattern to be replaced in the string
-def getMatchEnd(string, pattern, start)
+def get_match_end(string, pattern, start)
   finish = start + pattern.size-1
   matchEnd = -1
   unless string[finish] == nil
@@ -196,7 +196,7 @@ end
 # Time complexity: O(n)
 # Space complexity: O(n)
 # Auxiliary space increase with increase of input size, to store the hash
-def countUnique(array)
+def count_unique(array)
   return array.size if array.size <= 1
   hash = Hash.new
   array.each do |key|
@@ -208,7 +208,7 @@ def countUnique(array)
   return hash.keys.size
 end
 
-def getMaxPossibleString(number)
+def get_max_possible_string(number)
   maxStr = ""
   for x in 1..number
     maxStr = maxStr + x.to_s
@@ -218,10 +218,10 @@ end
 ###
 # given a string with numbers from 1 to 250 and a missing number
 # find the missing number
-def missingNumber(string, max)
-  maxLen = getMaxPossibleString(max)
-  digits = maxLen - string.length
+def missing_number(string, max)
+  max_len = get_max_possible_string(max)
+  digits = max_len - string.length
   
-  p "missing #{maxLen - string.length} digit number"
+  p "missing #{max_len - string.length} digit number"
 end
-# missingNumber("3412678910", 10)
+# missing_number("3412678910", 10)

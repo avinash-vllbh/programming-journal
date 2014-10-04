@@ -6,7 +6,7 @@
 # set of size 3 ==> power set size is 8
 # Time complexity is TC: O(2**n)
 
-def printPowerSet(array)
+def print_power_set(array)
   power_set_size = 2**array.size
   power_set_size.times do |i|
     subset = []
@@ -21,4 +21,4 @@ def printPowerSet(array)
   end
 end
 
-printPowerSet([2,3,4])
+print_power_set([2,3,4])

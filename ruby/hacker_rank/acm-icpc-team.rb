@@ -3,7 +3,7 @@ require 'pry'
 ###
 # To return the combined expertise of the two-man team
 ###
-def getTeamExpertise(t1,t2)
+def get_team_expertise(t1,t2)
     expertise = []
     t1.size.times do |i|
         if t1[i] == 1 or t2[i] == 1
@@ -16,7 +16,7 @@ def getTeamExpertise(t1,t2)
 end
 
 # Return the maximum team expertise for pairs of two and number of such pairs possible.
-def maxTeamExpertise(people)
+def max_team_expertise(people)
     max_expertise = []
     max_topics = 0 # track the maximum number of topics covered by a team
     binding.pry
@@ -24,7 +24,7 @@ def maxTeamExpertise(people)
         m1 = people[i]
         for j in 1..people.size-1
             m2 = people[j]
-            team_expertise = getTeamExpertise(m1,m2) # get the expertise of the team
+            team_expertise = get_team_expertise(m1,m2) # get the expertise of the team
             count = 0
             team_expertise.each do |i|
                 count += 1 if i == 1
@@ -57,4 +57,4 @@ people_count.times do
     people << expertise
 end
 # Find the maximum team expertise
-maxTeamExpertise(people)
+max_team_expertise(people)

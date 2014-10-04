@@ -9,13 +9,13 @@ class BinarySearchTree
   ###
   # Insert an element to BST through recursion
   ###
-  def insertToBST(root, value)
+  def insert_to_bst(root, value)
     if root.nil?
       root = TreeNode.new(value)
     elsif value < root.value
-      root.left = insertToBST(root.left, value)
+      root.left = insert_to_bst(root.left, value)
     else
-      root.right = insertToBST(root.right, value)
+      root.right = insert_to_bst(root.right, value)
     end
     return root
   end
@@ -23,7 +23,7 @@ class BinarySearchTree
   ###
   # Add an element to BST through iteration
   ###
-  def additeratielyToBST(root, value)
+  def add_iteratively_to_bst(root, value)
     if root.nil?
       root = TreeNode.new(value)
     else
@@ -56,46 +56,46 @@ class BinarySearchTree
   # Time complexity: O(logn)
   # Space complexity: O(1)
   ###
-  def searchBST(root, element)
+  def search_bst(root, element)
     return if root == nil
     return "Found" if root.value == element
     if element < root.value
-      searchBST(root.left, element)
+      search_bst(root.left, element)
     else
-      searchBST(root.right, element)
+      search_bst(root.right, element)
     end
   end
 
   # Printing binary tree through pre-order traversal
-  def printBST(root)
+  def print_bst(root)
     return if root == nil
     puts root.value
     if root.left != nil
       puts "Left of #{root.value}"
-      printBST(root.left)
+      print_bst(root.left)
     end
     if root.right !=nil
       puts "Right of #{root.value}"
-      printBST(root.right)
+      print_bst(root.right)
     end
   end
 
-  def addRandomElementsToBST
+  def add_random_elements_to_bst
     root = nil
     [10, 5, 13, 6, 3, 10, 12, 11].each do |i|
-      root = insertToBST(root, i)
+      root = insert_to_bst(root, i)
     end
     # [10, 5, 13, 6, 3, 10, 12, 11].each do |i|
-    #   root = additeratielyToBST(root, i)
+    #   root = add_iteratively_to_bst(root, i)
     # end
     return root
   end
 end
 
 bst = BinarySearchTree.new
-root = bst.addRandomElementsToBST
-bst.printBST(root)
-if bst.searchBST(root, 11)
+root = bst.add_random_elements_to_bst
+bst.print_bst(root)
+if bst.search_bst(root, 11)
   puts "Element Found"
 else
   puts "Element not found"

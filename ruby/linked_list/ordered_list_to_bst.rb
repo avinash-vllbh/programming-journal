@@ -1,6 +1,6 @@
 # Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
 require 'pry'
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class TreeNode
   attr_accessor :value, :left, :right
   def initialize(value = nil)
@@ -17,23 +17,23 @@ class OrderedListToBST
   ###
   # create an ordered list
   ###
-  def createOrderedList
+  def create_ordered_list
     [1,2,3,4,5,6,7,8,9].each do |x|
       list.add(x)
     end
   end
 
   # Printing binary tree through pre-order traversal
-  def printBST(root)
+  def print_bst(root)
     return if root == nil
     puts root.value
     if root.left != nil
       puts "Left of #{root.value}"
-      printBST(root.left)
+      print_bst(root.left)
     end
     if root.right !=nil
       puts "Right of #{root.value}"
-      printBST(root.right)
+      print_bst(root.right)
     end
   end
 
@@ -44,7 +44,7 @@ class OrderedListToBST
   # Time complexity: O(n) [O(n) --> To find the size of the list, O(n) --> To traverse the list adding each element to BST]
   # Space complexity: O(n) [since we are creating a tree of size of list]
   ###
-  def orderedListToBalancedBST(list_node, start, finish)
+  def ordered_list_to_balanced_bst(list_node, start, finish)
     # Making list node a class varaible to keep the pointer moving 
     if @list_node.nil?
       @list_node = list_node
@@ -52,11 +52,11 @@ class OrderedListToBST
     return nil if start > finish
     mid = start + (finish-start)/2
     # binding.pry
-    left_tree = orderedListToBalancedBST(@list_node, start, mid-1)
+    left_tree = ordered_list_to_balanced_bst(@list_node, start, mid-1)
     parent = TreeNode.new(@list_node.value)
     parent.left = left_tree
     @list_node = @list_node.next
-    parent.right = orderedListToBalancedBST(@list_node, mid+1, finish)
+    parent.right = ordered_list_to_balanced_bst(@list_node, mid+1, finish)
     return parent
   end
 end
@@ -64,7 +64,7 @@ end
 
 bst = OrderedListToBST.new
 size = 0
-bst.createOrderedList
+bst.create_ordered_list
 bst.list.print
 current_node = bst.list.head
 while current_node.next != nil
@@ -72,8 +72,8 @@ while current_node.next != nil
   size += 1
 end
 root = nil
-root = bst.orderedListToBalancedBST(bst.list.head, 0, size)
-bst.printBST(root)
+root = bst.ordered_list_to_balanced_bst(bst.list.head, 0, size)
+bst.print_bst(root)
 
 
 ###

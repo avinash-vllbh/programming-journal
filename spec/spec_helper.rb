@@ -5,8 +5,8 @@
 # # $:<< "../ruby"
 # $:<< File.join(File.dirname(__FILE__), '..')
 # Load path is not working
-Dir["/home/avinash/Desktop/programming-journal/ruby/Strings/*.rb"].each {|file| require_relative file}
-Dir["/home/avinash/Desktop/programming-journal/ruby/Stack/*.rb"].each {|file| require_relative file}
+Dir["/home/avinash/Desktop/programming-journal/ruby/strings/*.rb"].each {|file| require_relative file}
+Dir["/home/avinash/Desktop/programming-journal/ruby/stack/*.rb"].each {|file| require_relative file}
 
 require 'stringio'
 # Capture anything that's printed out stdout

@@ -1,9 +1,9 @@
 #Reverse a linked list
-require_relative 'SingleLinkedList'
+require_relative 'single_linked_list'
 class ReverseLinkedList < SingleLinkedList
 
   # Reverse a linked list iteratively
-  def reverseList
+  def reverse_list
     prev = nil
     current = head
     next_node = nil
@@ -23,13 +23,13 @@ class ReverseLinkedList < SingleLinkedList
   # Uses function stack during execution to reverse the nodes
   # Time complexity: O(n)
   ###
-  def reverseRecursiveList(node)
+  def reverse_recursive_list(node)
     # After reaching end of list we point head to end node and return
     if node.next == nil
       @head = node
       return
     end
-    reverseRecursiveList(node.next)
+    reverse_recursive_list(node.next)
     # Recursion starts folding up
     temp = node.next
     temp.next = node
@@ -40,9 +40,9 @@ end
 list = ReverseLinkedList.new
 list.createRandomList(7)
 list.print
-list.reverseList
+list.reverse_list
 puts "List reversed iteratively"
 list.print
-list.reverseRecursiveList(list.head)
+list.reverse_recursive_list(list.head)
 puts "List reversed back to original state recursively"
 list.print

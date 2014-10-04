@@ -4,7 +4,7 @@
 # Time complexity: O(logn)
 # Space complexity: O(1)
 ###
-def binarySearch(array, size, x, first = true)
+def binary_search(array, size, x, first = true)
   start = 0
   finish = size-1
   result = -1
@@ -33,13 +33,13 @@ end
 # Time complexity: O(logn)
 # Space complexity: O(1)
 ###
-def countOccurances(array, element)
-  first = binarySearch(array, array.size, element) # Time complexity: O(logn)
+def count_occurances(array, element)
+  first = binary_search(array, array.size, element) # Time complexity: O(logn)
   unless first == -1
-    last = binarySearch(array, array.size, element, false) # Time complexity: O(logn)
+    last = binary_search(array, array.size, element, false) # Time complexity: O(logn)
     return count = last - first + 1
   end
   return 0
 end
 
-puts "Number of occurances of 8: #{countOccurances([8,8,8,8,8,8,12,15], 8)}"
+puts "Number of occurances of 8: #{count_occurances([8,8,8,8,8,8,12,15], 8)}"

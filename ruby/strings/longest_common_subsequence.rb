@@ -19,22 +19,22 @@ def lcs(string1, string2)
   # puts "Length of LCS between #{string1} and #{string2} is #{lcs_grid.last.last}"
 
   # Tracing backwards to print the LCS using recursion
-  lcss = tracingLCS(lcs_grid, string1, string2, string1.length, string2.length)
+  lcss = tracing_lcs(lcs_grid, string1, string2, string1.length, string2.length)
   return lcss.join(""), lcs_grid.last.last
 end
 
 # Tracing backwards to print the LCS using recursion
-def tracingLCS(lcs_grid, string1, string2, i, j)
+def tracing_lcs(lcs_grid, string1, string2, i, j)
   @lcss ||= []
   return if i < 0 or j < 0
   if string1[i-1] == string2[j-1]
-    tracingLCS(lcs_grid, string1, string2, i-1, j-1)
+    tracing_lcs(lcs_grid, string1, string2, i-1, j-1)
     @lcss << string1[i-1]
   else
     if lcs_grid[i-1][j] > lcs_grid[i][j-1]
-      tracingLCS(lcs_grid, string1, string2, i-1, j)
+      tracing_lcs(lcs_grid, string1, string2, i-1, j)
     else
-      tracingLCS(lcs_grid, string1, string2, i, j-1)
+      tracing_lcs(lcs_grid, string1, string2, i, j-1)
     end
   end
   return @lcss
