@@ -34,11 +34,11 @@ def sort_check_unique(s)
   true
 end
 
-require 'benchmark'
-TEST_COUNT = 1_000_000
+# require 'benchmark'
+# TEST_COUNT = 1_000_000
 
-Benchmark.bmbm(5) do |b|
-  b.report(:has_dup?) { TEST_COUNT.times { has_dup?('world') } }
-  b.report(:uniq_chars?) { TEST_COUNT.times { uniq_chars?('world') } }
-  b.report(:sort_check_unique) { TEST_COUNT.times { sort_check_unique('world') } }
-end
+# Benchmark.bmbm(5) do |b|
+#   b.report(:has_dup?) { TEST_COUNT.times { has_dup?('world') } }
+#   b.report(:uniq_chars?) { TEST_COUNT.times { uniq_chars?('world') } }
+#   b.report(:sort_check_unique) { TEST_COUNT.times { sort_check_unique('world') } }
+# end

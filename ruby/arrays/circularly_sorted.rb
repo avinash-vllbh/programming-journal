@@ -18,7 +18,7 @@ end
 # Binary search doesn't work if there are any duplicates
 ###
 # Time complexity: O(logn)
-#Space complexity: O(1) auxiliary space doesn't increase with input size
+# Space complexity: O(1) auxiliary space doesn't increase with input size
 def binary_search_array(array, start, finish, x)
   return if start > finish
   mid = (start + finish)/2
